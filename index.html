@@ -313,17 +313,20 @@
       color: var(--text-primary);
     }
     .logo-mark {
-      width: 36px; height: 36px;
+      width: 36px; 
+      height: 36px;
       border-radius: 9px;
-      background: var(--grad-brand);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -0.03em;
+      overflow: hidden;
       box-shadow: 0 0 20px rgba(37,99,235,0.4);
+    }
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
     .nav-links {
       display: flex;
@@ -1003,53 +1006,33 @@
     .team-header .section-desc { margin: 16px auto 0; text-align: center; }
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
     }
     .team-card {
+      text-align: center;
       background: var(--bg-card);
       border: 1px solid var(--border-dim);
       border-radius: var(--radius-lg);
-      overflow: hidden;
-      text-align: center;
+      padding: 32px 24px;
       transition: all 0.35s ease;
-      position: relative;
     }
     .team-card:hover {
-      border-color: rgba(37,99,235,0.3);
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(37,99,235,0.12);
-    }
-    .team-card-top {
-      position: relative;
-      padding-top: 32px;
-    }
-    .team-card-top::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 80px;
-      background: var(--grad-brand);
-      opacity: 0.12;
+      border-color: rgba(37,99,235,0.25);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(37,99,235,0.1);
     }
     .team-avatar {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 800;
-      border: 3px solid var(--border-subtle);
+      width: 80px; height: 80px;
+      border-radius: 12px;
+      margin: 0 auto 16px;
+      background: var(--grad-brand);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px;
     }
-    .team-body { padding: 16px 16px 24px; }
     .team-name {
       font-family: var(--font-display);
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       color: var(--text-primary);
       margin-bottom: 4px;
@@ -1057,1657 +1040,941 @@
     .team-role {
       font-size: 12px;
       color: var(--cyan-core);
-      font-family: var(--font-mono);
-      font-weight: 500;
+      font-weight: 600;
       margin-bottom: 12px;
+    }
+    .team-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
     }
     .team-socials {
       display: flex;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
+      margin-top: 16px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
-    .social-btn {
-      width: 28px; height: 28px;
+    .team-card:hover .team-socials { opacity: 1; }
+    .team-social-link {
+      width: 32px; height: 32px;
       border-radius: 6px;
+      background: rgba(37,99,235,0.15);
       display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border-dim);
-      font-size: 11px;
-      color: var(--text-muted);
+      font-size: 14px;
+      color: var(--blue-light);
       transition: all 0.2s ease;
     }
-    .social-btn:hover {
-      background: rgba(37,99,235,0.15);
-      border-color: rgba(37,99,235,0.3);
-      color: var(--blue-light);
+    .team-social-link:hover {
+      background: rgba(37,99,235,0.3);
+      transform: translateY(-2px);
     }
 
     /* =========================================
        TESTIMONIALS SECTION
     ========================================= */
-    #testimonials {
-      background: linear-gradient(180deg, transparent, rgba(14,18,32,0.7), transparent);
-    }
-    .testi-header { text-align: center; margin-bottom: 56px; }
-    .testi-header .section-desc { margin: 16px auto 0; text-align: center; }
-    .testi-grid {
+    #testimonials { position: relative; }
+    .testimonials-header { text-align: center; margin-bottom: 56px; }
+    .testimonials-header .section-desc { margin: 16px auto 0; text-align: center; }
+    .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
-    .testi-card {
+    .testimonial-card {
       background: var(--bg-card);
       border: 1px solid var(--border-dim);
       border-radius: var(--radius-lg);
-      padding: 32px;
-      position: relative;
-      transition: all 0.3s ease;
+      padding: 32px 28px;
+      transition: all 0.35s ease;
     }
-    .testi-card:hover {
-      border-color: rgba(37,99,235,0.25);
-      transform: translateY(-3px);
-      box-shadow: 0 16px 40px rgba(37,99,235,0.1);
+    .testimonial-card:hover {
+      border-color: rgba(37,99,235,0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(37,99,235,0.08);
     }
-    .testi-card.featured {
-      border-color: rgba(37,99,235,0.3);
-      background: linear-gradient(135deg, var(--bg-card), rgba(37,99,235,0.06));
-    }
-    .quote-mark {
-      font-family: var(--font-display);
-      font-size: 64px;
-      line-height: 0.7;
-      color: var(--blue-core);
-      opacity: 0.35;
+    .testimonial-stars {
+      display: flex;
+      gap: 4px;
       margin-bottom: 16px;
     }
-    .testi-text {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.78;
-      margin-bottom: 24px;
+    .star {
+      font-size: 14px;
+      color: #FBBF24;
     }
-    .testi-footer {
+    .testimonial-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-author {
       display: flex;
       align-items: center;
       gap: 12px;
     }
-    .testi-avatar {
+    .author-avatar {
       width: 40px; height: 40px;
       border-radius: 50%;
+      background: var(--grad-brand);
       display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      color: #fff;
+    }
+    .author-info { text-align: left; }
+    .author-name {
       font-family: var(--font-display);
-      font-size: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .author-title {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* =========================================
+       STATS SECTION
+    ========================================= */
+    #stats {
+      background: rgba(14,18,32,0.5);
+      border-top: 1px solid var(--border-dim);
+      border-bottom: 1px solid var(--border-dim);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    .stat-box {
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
       font-weight: 800;
-      flex-shrink: 0;
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
     }
-    .testi-name { font-size: 14px; font-weight: 600; color: var(--text-primary); }
-    .testi-co { font-size: 12px; color: var(--text-muted); }
-    .stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 12px;
+    .stat-lbl {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 8px;
+      font-weight: 500;
     }
-    .star { color: #F59E0B; font-size: 13px; }
 
     /* =========================================
        CONTACT SECTION
     ========================================= */
-    #contact {
-      position: relative;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-    .contact-info { padding-top: 8px; }
-    .contact-items { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
-    .contact-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .contact-icon {
-      width: 44px; height: 44px;
-      border-radius: var(--radius-sm);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-    }
-    .contact-icon-blue { background: rgba(37,99,235,0.15); color: var(--blue-light); }
-    .contact-icon-cyan { background: rgba(6,182,212,0.15); color: var(--cyan-light); }
-    .contact-icon-purple{ background: rgba(139,92,246,0.15); color: #A78BFA; }
-    .contact-icon-green { background: rgba(16,185,129,0.15); color: #34D399; }
-    .contact-item-label {
-      font-size: 11px;
-      font-family: var(--font-mono);
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 3px;
-    }
-    .contact-item-val {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-    .map-placeholder {
-      margin-top: 32px;
-      height: 180px;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      position: relative;
-      border: 1px solid var(--border-dim);
-    }
-    /* Contact form */
-    .contact-form-card {
+    #contact { position: relative; }
+    .contact-wrapper {
       background: var(--bg-card);
       border: 1px solid var(--border-dim);
       border-radius: var(--radius-xl);
-      padding: 40px;
+      padding: clamp(40px, 8vw, 80px);
+      text-align: center;
       position: relative;
       overflow: hidden;
     }
-    .contact-form-card::before {
+    .contact-wrapper::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--grad-brand);
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(37,99,235,0.08) 0%, transparent 60%);
+      pointer-events: none;
     }
-    .form-group { margin-bottom: 20px; }
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
+    .contact-content { position: relative; z-index: 1; }
+    .contact-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .contact-h2 .grad { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .contact-sub {
+      font-size: 16px;
       color: var(--text-secondary);
-      margin-bottom: 8px;
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
     }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border-dim);
-      border-radius: var(--radius-sm);
-      padding: 12px 16px;
-      font-size: 14px;
-      font-family: var(--font-body);
-      color: var(--text-primary);
-      outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      resize: vertical;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--border-focus);
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: var(--text-muted);
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-group textarea { min-height: 120px; }
-    .form-group select { appearance: none; cursor: pointer; }
-    .form-footer {
+    .contact-actions {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 16px;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 8px;
-    }
-    .form-note {
-      font-size: 12px;
-      color: var(--text-muted);
     }
 
     /* =========================================
        FOOTER
     ========================================= */
-    #footer {
-      background: var(--bg-deep);
+    footer {
+      background: rgba(11,15,25,0.8);
       border-top: 1px solid var(--border-dim);
-      padding: 80px 0 32px;
+      padding: 60px 0 40px;
+      position: relative;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(37,99,235,0.3), transparent);
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 48px;
-      margin-bottom: 64px;
+      margin-bottom: 48px;
     }
-    .footer-brand .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .footer-col h4 {
       font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 18px;
-      color: var(--text-primary);
-      margin-bottom: 16px;
-    }
-    .footer-tagline {
       font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      max-width: 280px;
-      margin-bottom: 24px;
-    }
-    .footer-socials { display: flex; gap: 10px; }
-    .footer-social {
-      width: 36px; height: 36px;
-      border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border-dim);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px;
-      color: var(--text-muted);
-      transition: all 0.2s ease;
-    }
-    .footer-social:hover {
-      background: rgba(37,99,235,0.15);
-      border-color: rgba(37,99,235,0.3);
-      color: var(--blue-light);
-    }
-    .footer-col-title {
-      font-family: var(--font-display);
-      font-size: 13px;
       font-weight: 700;
       color: var(--text-primary);
-      margin-bottom: 18px;
-      letter-spacing: 0.03em;
+      margin-bottom: 16px;
+      letter-spacing: 0.01em;
     }
-    .footer-links { display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a {
+    .footer-col a {
+      display: block;
       font-size: 13px;
-      color: var(--text-muted);
+      color: var(--text-secondary);
+      margin-bottom: 10px;
       transition: color 0.2s ease;
     }
-    .footer-links a:hover { color: var(--text-primary); }
-    .newsletter-form {
-      display: flex;
-      gap: 8px;
-      margin-top: 4px;
-    }
-    .newsletter-input {
-      flex: 1;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border-dim);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      font-size: 13px;
-      font-family: var(--font-body);
-      color: var(--text-primary);
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-    .newsletter-input:focus { border-color: var(--border-focus); }
-    .newsletter-input::placeholder { color: var(--text-muted); }
-    .newsletter-btn {
-      padding: 10px 16px;
-      background: var(--grad-brand);
-      border: none;
-      border-radius: var(--radius-sm);
-      color: #fff;
-      font-size: 13px;
-      font-weight: 600;
-      font-family: var(--font-display);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-    .newsletter-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .footer-col a:hover { color: var(--text-primary); }
     .footer-bottom {
-      border-top: 1px solid var(--border-dim);
-      padding-top: 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 20px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-dim);
     }
     .footer-copy {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-muted);
     }
-    .footer-bottom-links {
+    .footer-socials {
       display: flex;
-      gap: 24px;
+      gap: 12px;
     }
-    .footer-bottom-links a {
-      font-size: 13px;
-      color: var(--text-muted);
-      transition: color 0.2s ease;
-    }
-    .footer-bottom-links a:hover { color: var(--text-secondary); }
-    .footer-cert-badges {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    .cert-chip {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 500;
-      color: var(--text-muted);
-      background: rgba(255,255,255,0.03);
+    .social-link {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(37,99,235,0.1);
       border: 1px solid var(--border-dim);
-      padding: 4px 10px;
-      border-radius: 4px;
-      letter-spacing: 0.05em;
-    }
-
-    /* =========================================
-       SCROLL REVEAL ANIMATIONS
-    ========================================= */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-    .reveal-delay-6 { transition-delay: 0.6s; }
-    .reveal-delay-7 { transition-delay: 0.7s; }
-
-    /* =========================================
-       PROGRESS BAR (TOP)
-    ========================================= */
-    #progress-bar {
-      position: fixed;
-      top: 0; left: 0;
-      height: 2px;
-      background: var(--grad-brand);
-      z-index: 200;
-      transition: width 0.1s linear;
-    }
-
-    /* =========================================
-       BACK TO TOP
-    ========================================= */
-    #back-top {
-      position: fixed;
-      bottom: 32px; right: 32px;
-      width: 44px; height: 44px;
-      border-radius: var(--radius-sm);
-      background: var(--grad-brand);
-      border: none;
       display: flex; align-items: center; justify-content: center;
-      color: #fff;
-      font-size: 18px;
-      box-shadow: 0 4px 16px rgba(37,99,235,0.4);
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      z-index: 90;
+      font-size: 16px;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
     }
-    #back-top.show { opacity: 1; transform: translateY(0); }
-    #back-top:hover { transform: translateY(-3px); }
-
-    /* =========================================
-       SECTION DIVIDER
-    ========================================= */
-    .sect-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-dim) 20%, var(--border-dim) 80%, transparent);
+    .social-link:hover {
+      background: rgba(37,99,235,0.2);
+      border-color: rgba(37,99,235,0.3);
+      color: var(--blue-light);
     }
 
     /* =========================================
-       RESPONSIVE
+       RESPONSIVE DESIGN
     ========================================= */
-    @media (max-width: 1100px) {
+    @media (max-width: 1280px) {
+      .about-grid { gap: 60px; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .tech-grid { grid-template-columns: repeat(4, 1fr); }
-      .team-grid { grid-template-columns: repeat(3, 1fr); }
-      .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
-    }
-    @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; gap: 48px; }
-      .hero-visual { display: none; }
       .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-      .testi-grid { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
-      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .tech-grid { grid-template-columns: repeat(3, 1fr); }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
-      .portfolio-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
-      .team-grid { grid-template-columns: repeat(2, 1fr); }
-      .tech-grid { grid-template-columns: repeat(3, 1fr); }
-      .form-row { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 540px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { display: none; }
       .services-grid { grid-template-columns: 1fr; }
-      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-grid { grid-template-columns: 1fr; }
       .tech-grid { grid-template-columns: repeat(2, 1fr); }
-      .testi-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .hero-stats { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .hero-stat-div { display: none; }
-      .vm-row { grid-template-columns: 1fr; }
-      .stats-row { flex-direction: column; }
+      .team-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+    }
+    @media (max-width: 640px) {
+      :root { --section-pad: clamp(60px, 8vw, 100px); --nav-h: 56px; }
+      .section-title { font-size: clamp(28px, 3.5vw, 44px); }
+      .hero-h1 { font-size: clamp(36px, 5vw, 56px); }
+      .stats-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
-
 <body>
+  <div class="grid-bg"></div>
 
-<!-- Loading Screen -->
-<div id="loader">
-  <div class="loader-logo">TS · Tech Solution</div>
-  <div class="loader-bar"><div class="loader-fill"></div></div>
-  <div class="loader-pct" id="loader-pct">0%</div>
-</div>
-
-<!-- Scroll Progress Bar -->
-<div id="progress-bar"></div>
-
-<!-- Background Grid -->
-<div class="grid-bg" aria-hidden="true"></div>
-
-<!-- ====================== NAVBAR ====================== -->
-<nav id="navbar" role="navigation" aria-label="Main navigation">
-  <div class="container">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo" aria-label="Tech Solution Home">
-        <div class="logo-mark" aria-hidden="true">TS</div>
-        Tech Solution
-      </a>
-      <ul class="nav-links" role="list">
-        <li><a href="#hero" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="nav-cta">
-        <a href="#contact" class="btn btn-primary" style="padding:10px 22px; font-size:13px;">Get Started</a>
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-logo">Tech Solution</div>
+    <div class="loader-bar">
+      <div class="loader-fill"></div>
     </div>
+    <div class="loader-pct">0%</div>
   </div>
-</nav>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobile navigation">
-  <a href="#hero" onclick="closeMobile()">Home</a>
-  <a href="#about" onclick="closeMobile()">About</a>
-  <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
-  <a href="#team" onclick="closeMobile()">Team</a>
-  <a href="#testimonials" onclick="closeMobile()">Testimonials</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
-  <a href="#contact" class="btn btn-primary" onclick="closeMobile()">Get Started</a>
-</div>
-
-<!-- ====================== HERO ====================== -->
-<section id="hero" aria-labelledby="hero-heading">
-  <div class="hero-orb-1" aria-hidden="true"></div>
-  <div class="hero-orb-2" aria-hidden="true"></div>
-
-  <!-- Floating tech cards visual (desktop only) -->
-  <div class="hero-visual" aria-hidden="true">
-    <div class="tech-cards-float">
-      <!-- Card 1: AI Engine -->
-      <div class="float-card float-card-1">
-        <div class="fc-icon fc-icon-blue">⬡</div>
-        <div class="fc-title">AI Engine v3.2</div>
-        <div class="fc-meta">Status: Active · 99.9% uptime</div>
-        <div class="fc-bar"><div class="fc-fill" style="width:87%;background:linear-gradient(90deg,#2563EB,#06B6D4)"></div></div>
-        <div class="fc-dots">
-          <div class="fc-dot" style="background:#2563EB;opacity:.9"></div>
-          <div class="fc-dot" style="background:#06B6D4;opacity:.7"></div>
-          <div class="fc-dot" style="background:#1E293B;"></div>
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <div class="nav-logo">
+          <div class="logo-mark">
+            <img src="ChatGPT%20Image%20May%205%2C%202026%2C%2005_29_49%20PM.png" alt="Tech Solution Logo" />
+          </div>
+          <span>Tech Solution</span>
         </div>
-      </div>
-      <!-- Card 2: Security -->
-      <div class="float-card float-card-2">
-        <div class="fc-icon fc-icon-cyan">🛡</div>
-        <div class="fc-title">Threat Shield</div>
-        <div class="fc-meta">0 incidents · 24h watch</div>
-        <div class="fc-bar"><div class="fc-fill" style="width:100%;background:#06B6D4"></div></div>
-      </div>
-      <!-- Card 3: Cloud -->
-      <div class="float-card float-card-3">
-        <div class="fc-icon fc-icon-purple">☁</div>
-        <div class="fc-title">Cloud Infra</div>
-        <div class="fc-meta">12 regions · AWS · 4.2TB/s</div>
-        <div class="fc-bar"><div class="fc-fill" style="width:72%;background:linear-gradient(90deg,#8B5CF6,#06B6D4)"></div></div>
-        <div style="display:flex;gap:6px;margin-top:10px;">
-          <span class="tag tag-blue">K8s</span>
-          <span class="tag tag-cyan">Docker</span>
-          <span class="tag tag-purple">AWS</span>
+        <div class="nav-links">
+          <a href="#hero" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#team">Team</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-cta">
+          <button class="btn btn-primary">Get Started</button>
+          <button class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
     </div>
-  </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+      <button class="btn btn-primary">Get Started</button>
+    </div>
+  </nav>
 
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <div class="pulse"></div>
-        Now accepting enterprise clients 2026
-      </div>
-      <h1 class="hero-h1" id="hero-heading">
-        <span class="line-plain">Building The</span>
-        <span class="line-grad">Future Through</span>
-        <span class="line-plain">Technology</span>
-      </h1>
-      <p class="hero-sub">
-        Kami merancang solusi teknologi yang mendorong pertumbuhan bisnis Anda. Dari AI hingga Cyber Security, dari Cloud hingga Digital Transformation — satu partner, infinite possibilities.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">
-          <span>Mulai Konsultasi</span>
-          <span>→</span>
-        </a>
-        <a href="#portfolio" class="btn btn-outline">
-          <span>Lihat Portfolio</span>
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num">150+</div>
-          <div class="hero-stat-lbl">Project Selesai</div>
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <div class="hero-orb-1"></div>
+    <div class="hero-orb-2"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse"></span>
+          🚀 Welcome to the Future
         </div>
-        <div class="hero-stat-div" aria-hidden="true"></div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">80+</div>
-          <div class="hero-stat-lbl">Client Enterprise</div>
+        <h1 class="hero-h1">
+          <span class="line-plain">Building The</span>
+          <span class="line-grad">Future Through Technology</span>
+        </h1>
+        <p class="hero-sub">
+          We deliver cutting-edge software solutions, cybersecurity expertise, and AI-powered innovations to transform your business and drive digital excellence.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary">Start Your Journey</button>
+          <button class="btn btn-outline">View Our Work</button>
         </div>
-        <div class="hero-stat-div" aria-hidden="true"></div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">8 Thn</div>
-          <div class="hero-stat-lbl">Pengalaman</div>
-        </div>
-        <div class="hero-stat-div" aria-hidden="true"></div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">99.9%</div>
-          <div class="hero-stat-lbl">Uptime SLA</div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">500+</div>
+            <div class="hero-stat-lbl">Projects Completed</div>
+          </div>
+          <div class="hero-stat-div"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">150+</div>
+            <div class="hero-stat-lbl">Happy Clients</div>
+          </div>
+          <div class="hero-stat-div"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">12+</div>
+            <div class="hero-stat-lbl">Years Experience</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Trusted By Marquee -->
-<div id="trusted" role="complementary" aria-label="Clients and partners">
-  <div class="marquee-label">Trusted by leading companies</div>
-  <div class="marquee-track" aria-hidden="true">
-    <div class="marquee-inner" id="marquee-inner">
-      <span class="marquee-item">PERTAMINA</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">TELKOM</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">BCA DIGITAL</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">GOJEK</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">MANDIRI</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">TOKOPEDIA</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">GRAB</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">BUKALAPAK</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">XL AXIATA</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">INDOSAT</span>
-      <span class="marquee-item">·</span>
-      <!-- duplicate for seamless -->
-      <span class="marquee-item">PERTAMINA</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">TELKOM</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">BCA DIGITAL</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">GOJEK</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">MANDIRI</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">TOKOPEDIA</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">GRAB</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">BUKALAPAK</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">XL AXIATA</span>
-      <span class="marquee-item">·</span>
-      <span class="marquee-item">INDOSAT</span>
-      <span class="marquee-item">·</span>
+    <!-- Floating cards -->
+    <div class="hero-visual">
+      <div class="tech-cards-float">
+        <div class="float-card float-card-1">
+          <div class="fc-icon fc-icon-blue">🔒</div>
+          <div class="fc-title">Security First</div>
+          <div class="fc-meta">Enterprise Grade</div>
+          <div class="fc-bar"><div class="fc-fill" style="width: 85%; background: var(--grad-brand);"></div></div>
+        </div>
+        <div class="float-card float-card-2">
+          <div class="fc-icon fc-icon-cyan">⚡</div>
+          <div class="fc-title">Lightning Fast</div>
+          <div class="fc-meta">99.9% Uptime</div>
+          <div class="fc-dots">
+            <div class="fc-dot" style="background: var(--blue-light);"></div>
+            <div class="fc-dot" style="background: var(--cyan-light);"></div>
+            <div class="fc-dot" style="background: #A78BFA;"></div>
+          </div>
+        </div>
+        <div class="float-card float-card-3">
+          <div class="fc-icon fc-icon-purple">🤖</div>
+          <div class="fc-title">AI Powered</div>
+          <div class="fc-meta">Next Generation</div>
+          <div class="fc-bar"><div class="fc-fill" style="width: 70%; background: #A78BFA;"></div></div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- ====================== ABOUT ====================== -->
-<section id="about" class="section" aria-labelledby="about-heading">
-  <div class="container">
-    <div class="about-grid">
-      <!-- Visual left -->
-      <div class="about-visual reveal">
-        <div class="about-main-card">
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
-            <div class="logo-mark" style="width:44px;height:44px;border-radius:10px;font-size:15px;flex-shrink:0;">TS</div>
-            <div>
-              <div style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--text-primary);">Tech Solution</div>
-              <div style="font-size:12px;color:var(--cyan-core);font-family:var(--font-mono);">Est. 2017 · Jakarta, Indonesia</div>
+  <!-- TRUSTED BY -->
+  <section id="trusted">
+    <div class="marquee-label">Trusted By Industry Leaders</div>
+    <div class="marquee-track">
+      <div class="marquee-inner">
+        <div class="marquee-item">Fortune 500 Companies</div>
+        <div class="marquee-item">•</div>
+        <div class="marquee-item">Fast-Growing Startups</div>
+        <div class="marquee-item">•</div>
+        <div class="marquee-item">Government Agencies</div>
+        <div class="marquee-item">•</div>
+        <div class="marquee-item">Global Corporations</div>
+        <div class="marquee-item">•</div>
+        <div class="marquee-item">Fortune 500 Companies</div>
+        <div class="marquee-item">•</div>
+        <div class="marquee-item">Fast-Growing Startups</div>
+        <div class="marquee-item">•</div>
+        <div class="marquee-item">Government Agencies</div>
+        <div class="marquee-item">•</div>
+        <div class="marquee-item">Global Corporations</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-main-card">
+            <h3 style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 20px;">Who We Are</h3>
+            <div class="vm-row">
+              <div class="vm-card">
+                <div class="vm-card-head">Founded</div>
+                <div class="vm-card-body">2012 in Silicon Valley with a vision to innovate</div>
+              </div>
+              <div class="vm-card">
+                <div class="vm-card-head">Mission</div>
+                <div class="vm-card-body">Transform businesses through technology & innovation</div>
+              </div>
+            </div>
+            <div class="vm-row">
+              <div class="vm-card">
+                <div class="vm-card-head">Team Size</div>
+                <div class="vm-card-body">500+ talented professionals worldwide</div>
+              </div>
+              <div class="vm-card">
+                <div class="vm-card-head">Expertise</div>
+                <div class="vm-card-body">Full-stack development and infrastructure</div>
+              </div>
+            </div>
+            <div class="stats-row">
+              <div class="stat-pill">
+                <div class="stat-pill-num">98%</div>
+                <div class="stat-pill-lbl">Client Satisfaction</div>
+              </div>
+              <div class="stat-pill">
+                <div class="stat-pill-num">500+</div>
+                <div class="stat-pill-lbl">Projects Delivered</div>
+              </div>
+              <div class="stat-pill">
+                <div class="stat-pill-num">$2B+</div>
+                <div class="stat-pill-lbl">Revenue Generated</div>
+              </div>
+            </div>
+            <div class="about-float-badge">
+              <div class="award-icon">🏆</div>
+              <div class="award-text">
+                <div class="award-title">Award Winning</div>
+                <div class="award-sub">Industry Leaders 2025</div>
+              </div>
             </div>
           </div>
-          <p style="font-size:14px;color:var(--text-secondary);line-height:1.75;margin-bottom:20px;">
-            Kami adalah perusahaan teknologi yang berfokus pada inovasi digital, keamanan siber, dan transformasi bisnis. Dengan tim yang berpengalaman dan teknologi terdepan, kami membantu perusahaan-perusahaan Indonesia dan Asia Tenggara berkembang di era digital.
+        </div>
+        <div>
+          <span class="section-label">About Us</span>
+          <h2 class="section-title">Pioneering <span class="grad">Digital Transformation</span></h2>
+          <p class="section-desc">
+            Tech Solution is a leading technology consulting and software development firm dedicated to helping enterprises navigate their digital transformation journey. With over a decade of experience, we've helped hundreds of organizations unlock their potential through innovative technology solutions.
           </p>
-          <div class="vm-row">
-            <div class="vm-card">
-              <div class="vm-card-head">Visi</div>
-              <div class="vm-card-body">Menjadi partner teknologi #1 di Asia Tenggara yang mendorong transformasi digital berkelanjutan.</div>
-            </div>
-            <div class="vm-card">
-              <div class="vm-card-head">Misi</div>
-              <div class="vm-card-body">Menghadirkan solusi inovatif, aman, dan skalabel untuk bisnis dari berbagai skala industri.</div>
-            </div>
-          </div>
-          <div class="stats-row">
-            <div class="stat-pill">
-              <div class="stat-pill-num">150+</div>
-              <div class="stat-pill-lbl">Projects</div>
-            </div>
-            <div class="stat-pill">
-              <div class="stat-pill-num">80+</div>
-              <div class="stat-pill-lbl">Clients</div>
-            </div>
-            <div class="stat-pill">
-              <div class="stat-pill-num">50+</div>
-              <div class="stat-pill-lbl">Engineers</div>
-            </div>
-            <div class="stat-pill">
-              <div class="stat-pill-num">8+</div>
-              <div class="stat-pill-lbl">Years</div>
-            </div>
-          </div>
-        </div>
-        <!-- Floating badge -->
-        <div class="about-float-badge">
-          <div class="award-icon">🏆</div>
-          <div class="award-text">
-            <div class="award-title">Best Tech Company 2025</div>
-            <div class="award-sub">Indonesia Tech Award</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Text right -->
-      <div class="about-text">
-        <div class="section-label reveal">Tentang Kami</div>
-        <h2 class="section-title reveal reveal-delay-1" id="about-heading">
-          Inovasi Digital <span class="grad">Tanpa Batas</span>
-        </h2>
-        <p class="section-desc reveal reveal-delay-2">
-          Tech Solution berdiri di atas fondasi kepakaran teknologi dan semangat inovasi. Kami percaya bahwa teknologi yang tepat dapat mengubah cara bisnis beroperasi dan berkembang.
-        </p>
-        <p style="font-size:15px;color:var(--text-secondary);line-height:1.78;margin-top:20px;" class="reveal reveal-delay-3">
-          Dengan pengalaman lebih dari 8 tahun melayani klien enterprise dan startup unicorn, kami memahami kompleksitas teknologi modern dan tantangan nyata yang dihadapi bisnis. Setiap solusi dirancang custom sesuai kebutuhan spesifik Anda.
-        </p>
-        <!-- Certifications -->
-        <div class="cert-row reveal reveal-delay-4">
-          <div class="cert-badge"><div class="dot"></div>ISO 27001 Certified</div>
-          <div class="cert-badge"><div class="dot"></div>AWS Partner</div>
-          <div class="cert-badge"><div class="dot"></div>Google Cloud</div>
-          <div class="cert-badge"><div class="dot"></div>CMMI Level 3</div>
-          <div class="cert-badge"><div class="dot"></div>SOC 2 Type II</div>
-          <div class="cert-badge"><div class="dot"></div>Kominfo Registered</div>
-        </div>
-        <!-- Key points -->
-        <div style="margin-top:36px;display:flex;flex-direction:column;gap:16px;" class="reveal reveal-delay-5">
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <div style="width:36px;height:36px;border-radius:8px;background:rgba(37,99,235,0.15);display:flex;align-items:center;justify-content:center;color:var(--blue-light);flex-shrink:0;font-size:16px;">⚡</div>
-            <div>
-              <div style="font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--text-primary);margin-bottom:2px;">Delivery Cepat & Terstruktur</div>
-              <div style="font-size:13px;color:var(--text-secondary);">Metodologi Agile dengan sprint 2 minggu, delivery tepat waktu dan terukur.</div>
-            </div>
-          </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <div style="width:36px;height:36px;border-radius:8px;background:rgba(6,182,212,0.15);display:flex;align-items:center;justify-content:center;color:var(--cyan-light);flex-shrink:0;font-size:16px;">🔒</div>
-            <div>
-              <div style="font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--text-primary);margin-bottom:2px;">Security by Design</div>
-              <div style="font-size:13px;color:var(--text-secondary);">Keamanan tertanam di setiap layer — dari arsitektur hingga deployment produksi.</div>
-            </div>
-          </div>
-          <div style="display:flex;gap:14px;align-items:flex-start;">
-            <div style="width:36px;height:36px;border-radius:8px;background:rgba(139,92,246,0.15);display:flex;align-items:center;justify-content:center;color:#A78BFA;flex-shrink:0;font-size:16px;">∞</div>
-            <div>
-              <div style="font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--text-primary);margin-bottom:2px;">Skalabilitas Enterprise</div>
-              <div style="font-size:13px;color:var(--text-secondary);">Infrastruktur yang tumbuh bersama bisnis Anda — dari startup hingga unicorn.</div>
-            </div>
+          <p class="section-desc" style="margin-top: 20px;">
+            Our team of experts specializes in cloud computing, artificial intelligence, cybersecurity, and custom software development. We pride ourselves on delivering solutions that not only meet today's challenges but anticipate tomorrow's opportunities.
+          </p>
+          <div class="cert-row">
+            <div class="cert-badge"><div class="dot"></div> ISO 27001 Certified</div>
+            <div class="cert-badge"><div class="dot"></div> AWS Advanced Partner</div>
+            <div class="cert-badge"><div class="dot"></div> Google Cloud Premier</div>
+            <div class="cert-badge"><div class="dot"></div> SOC 2 Compliant</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="sect-divider"></div>
-
-<!-- ====================== SERVICES ====================== -->
-<section id="services" class="section" aria-labelledby="services-heading">
-  <div class="container">
-    <div class="services-header">
-      <div class="section-label reveal">Layanan Kami</div>
-      <h2 class="section-title reveal reveal-delay-1" id="services-heading">
-        Solusi Teknologi <span class="grad">End-to-End</span>
-      </h2>
-      <p class="section-desc reveal reveal-delay-2">
-        Dari perencanaan strategis hingga implementasi penuh — kami menyediakan layanan teknologi komprehensif yang dirancang untuk pertumbuhan bisnis Anda.
-      </p>
-    </div>
-    <div class="services-grid">
-      <!-- Service cards -->
-      <div class="service-card reveal reveal-delay-1">
-        <div class="service-card-inner">
-          <div class="svc-icon" style="background:rgba(37,99,235,0.15);color:var(--blue-light);">🌐</div>
-          <div class="svc-title">Web Development</div>
-          <p class="svc-desc">Aplikasi web modern, performant, dan scalable menggunakan teknologi terdepan seperti React, Next.js, dan Node.js.</p>
-          <div class="svc-arrow">Pelajari lebih lanjut →</div>
-        </div>
+  <!-- SERVICES SECTION -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="services-header">
+        <span class="section-label">Our Services</span>
+        <h2 class="section-title">Comprehensive Solutions for <span class="grad">Every Challenge</span></h2>
+        <p class="section-desc">From strategy to implementation, we provide end-to-end services tailored to your business needs</p>
       </div>
-      <div class="service-card reveal reveal-delay-2">
-        <div class="service-card-inner">
-          <div class="svc-icon" style="background:rgba(16,185,129,0.15);color:#34D399;">📱</div>
-          <div class="svc-title">Mobile App Development</div>
-          <p class="svc-desc">Aplikasi iOS dan Android native maupun cross-platform dengan Flutter & React Native untuk pengalaman pengguna terbaik.</p>
-          <div class="svc-arrow">Pelajari lebih lanjut →</div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-card-inner">
+            <div class="svc-icon" style="background: rgba(37,99,235,0.2); color: var(--blue-light);">💻</div>
+            <h3 class="svc-title">Software Development</h3>
+            <p class="svc-desc">Custom applications built with cutting-edge technologies and best practices for scalability and performance.</p>
+            <div class="svc-arrow">Learn More →</div>
+          </div>
         </div>
-      </div>
-      <div class="service-card reveal reveal-delay-3">
-        <div class="service-card-inner">
-          <div class="svc-icon" style="background:rgba(239,68,68,0.15);color:#F87171;">🛡️</div>
-          <div class="svc-title">Cyber Security</div>
-          <p class="svc-desc">Penetration testing, vulnerability assessment, incident response, dan implementasi zero-trust security architecture.</p>
-          <div class="svc-arrow">Pelajari lebih lanjut →</div>
+        <div class="service-card">
+          <div class="service-card-inner">
+            <div class="svc-icon" style="background: rgba(6,182,212,0.2); color: var(--cyan-light);">🔐</div>
+            <h3 class="svc-title">Cyber Security</h3>
+            <p class="svc-desc">Comprehensive security solutions to protect your digital assets and maintain regulatory compliance.</p>
+            <div class="svc-arrow">Learn More →</div>
+          </div>
         </div>
-      </div>
-      <div class="service-card reveal reveal-delay-4">
-        <div class="service-card-inner">
-          <div class="svc-icon" style="background:rgba(6,182,212,0.15);color:var(--cyan-light);">☁️</div>
-          <div class="svc-title">Cloud Infrastructure</div>
-          <p class="svc-desc">Migrasi cloud, arsitektur multi-cloud, DevOps pipeline, dan pengelolaan infrastruktur di AWS, GCP, dan Azure.</p>
-          <div class="svc-arrow">Pelajari lebih lanjut →</div>
+        <div class="service-card">
+          <div class="service-card-inner">
+            <div class="svc-icon" style="background: rgba(139,92,246,0.2); color: #A78BFA;">🤖</div>
+            <h3 class="svc-title">AI & Machine Learning</h3>
+            <p class="svc-desc">Leverage artificial intelligence to automate processes, gain insights, and drive innovation.</p>
+            <div class="svc-arrow">Learn More →</div>
+          </div>
         </div>
-      </div>
-      <div class="service-card reveal reveal-delay-1">
-        <div class="service-card-inner">
-          <div class="svc-icon" style="background:rgba(139,92,246,0.15);color:#A78BFA;">🤖</div>
-          <div class="svc-title">AI & Machine Learning</div>
-          <p class="svc-desc">Pengembangan model ML custom, integrasi LLM, computer vision, NLP, dan solusi AI generatif untuk otomasi bisnis.</p>
-          <div class="svc-arrow">Pelajari lebih lanjut →</div>
-        </div>
-      </div>
-      <div class="service-card reveal reveal-delay-2">
-        <div class="service-card-inner">
-          <div class="svc-icon" style="background:rgba(245,158,11,0.15);color:#FCD34D;">🎨</div>
-          <div class="svc-title">UI/UX Design</div>
-          <p class="svc-desc">Desain produk digital yang berpusat pada pengguna — dari riset, wireframing, prototyping hingga design system enterprise.</p>
-          <div class="svc-arrow">Pelajari lebih lanjut →</div>
-        </div>
-      </div>
-      <div class="service-card reveal reveal-delay-3">
-        <div class="service-card-inner">
-          <div class="svc-icon" style="background:rgba(236,72,153,0.15);color:#F472B6;">🔗</div>
-          <div class="svc-title">Network Solutions</div>
-          <p class="svc-desc">Desain dan implementasi infrastruktur jaringan enterprise, SD-WAN, dan arsitektur microservices yang andal.</p>
-          <div class="svc-arrow">Pelajari lebih lanjut →</div>
-        </div>
-      </div>
-      <div class="service-card reveal reveal-delay-4">
-        <div class="service-card-inner">
-          <div class="svc-icon" style="background:rgba(20,184,166,0.15);color:#5EEAD4;">💼</div>
-          <div class="svc-title">IT Consulting</div>
-          <p class="svc-desc">Konsultasi strategis IT governance, digital transformation roadmap, dan technology audit untuk perusahaan dari berbagai industri.</p>
-          <div class="svc-arrow">Pelajari lebih lanjut →</div>
+        <div class="service-card">
+          <div class="service-card-inner">
+            <div class="svc-icon" style="background: rgba(16,185,129,0.2); color: #6EE7B7;">☁️</div>
+            <h3 class="svc-title">Cloud Computing</h3>
+            <p class="svc-desc">Modern cloud infrastructure solutions that scale with your business and reduce operational costs.</p>
+            <div class="svc-arrow">Learn More →</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="sect-divider"></div>
-
-<!-- ====================== PORTFOLIO ====================== -->
-<section id="portfolio" class="section" aria-labelledby="portfolio-heading">
-  <div class="container">
-    <div class="portfolio-header">
-      <div>
-        <div class="section-label reveal">Portfolio</div>
-        <h2 class="section-title reveal reveal-delay-1" id="portfolio-heading">
-          Project <span class="grad">Unggulan</span>
-        </h2>
+  <!-- PORTFOLIO SECTION -->
+  <section id="portfolio" class="section">
+    <div class="container">
+      <div class="portfolio-header">
+        <div>
+          <span class="section-label">Portfolio</span>
+          <h2 class="section-title">Our Latest <span class="grad">Projects</span></h2>
+        </div>
+        <button class="btn btn-outline">View All Projects</button>
       </div>
-      <a href="#contact" class="btn btn-outline reveal">Lihat Semua Project</a>
-    </div>
-    <div class="portfolio-grid">
-
-      <!-- Project 1 -->
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-img" style="background:linear-gradient(135deg,#0B0F19,#1E1B4B);">
-          <svg width="200" height="120" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-img-canvas" aria-hidden="true">
-            <rect x="20" y="20" width="160" height="80" rx="8" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.2)" stroke-width="1"/>
-            <rect x="30" y="30" width="60" height="8" rx="3" fill="rgba(37,99,235,0.3)"/>
-            <rect x="30" y="44" width="40" height="6" rx="3" fill="rgba(6,182,212,0.3)"/>
-            <rect x="30" y="58" width="140" height="1" fill="rgba(255,255,255,0.05)"/>
-            <rect x="30" y="64" width="50" height="20" rx="4" fill="rgba(37,99,235,0.15)" stroke="rgba(37,99,235,0.2)" stroke-width="1"/>
-            <rect x="90" y="64" width="50" height="20" rx="4" fill="rgba(6,182,212,0.1)" stroke="rgba(6,182,212,0.2)" stroke-width="1"/>
-            <circle cx="165" cy="35" r="8" fill="rgba(16,185,129,0.2)" stroke="rgba(16,185,129,0.4)" stroke-width="1"/>
-            <path d="M161 35 L164 38 L170 32" stroke="#34D399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <div class="project-img-overlay">
-            <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;">↗</div>
+      <div class="portfolio-grid">
+        <div class="project-card">
+          <div class="project-img">
+            <canvas class="project-img-canvas" style="background: linear-gradient(135deg, rgba(37,99,235,0.2) 0%, rgba(6,182,212,0.2) 100%);"></canvas>
+            <div class="project-img-overlay">
+              <span style="font-size: 24px;">🚀</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <div class="project-cat">Web Application</div>
+            <h3 class="project-title">FinTech Platform</h3>
+            <p class="project-desc">A comprehensive financial management system with real-time analytics and secure transactions.</p>
+            <div class="project-tags">
+              <span class="tag tag-blue">React</span>
+              <span class="tag tag-cyan">Node.js</span>
+              <span class="tag tag-green">AWS</span>
+            </div>
+            <a href="#" class="project-link">View Project →</a>
           </div>
         </div>
-        <div class="project-body">
-          <div class="project-cat">Artificial Intelligence</div>
-          <div class="project-title">NexusMind AI Dashboard</div>
-          <p class="project-desc">Platform analitik berbasis AI untuk visualisasi data real-time, prediksi tren bisnis, dan automasi laporan enterprise.</p>
-          <div class="project-tags">
-            <span class="tag tag-blue">Python</span>
-            <span class="tag tag-cyan">TensorFlow</span>
-            <span class="tag tag-purple">React</span>
+        <div class="project-card">
+          <div class="project-img">
+            <canvas class="project-img-canvas" style="background: linear-gradient(135deg, rgba(139,92,246,0.2) 0%, rgba(168,85,247,0.2) 100%);"></canvas>
+            <div class="project-img-overlay">
+              <span style="font-size: 24px;">🎯</span>
+            </div>
           </div>
-          <div class="project-link">Lihat Detail →</div>
-        </div>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-img" style="background:linear-gradient(135deg,#0B0F19,#1A1D2E);">
-          <svg width="200" height="120" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-img-canvas" aria-hidden="true">
-            <circle cx="100" cy="60" r="40" fill="none" stroke="rgba(239,68,68,0.15)" stroke-width="1"/>
-            <circle cx="100" cy="60" r="30" fill="none" stroke="rgba(239,68,68,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
-            <circle cx="100" cy="60" r="20" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
-            <circle cx="100" cy="60" r="6" fill="rgba(239,68,68,0.4)"/>
-            <circle cx="76" cy="48" r="4" fill="rgba(6,182,212,0.6)"/>
-            <circle cx="130" cy="42" r="3" fill="rgba(245,158,11,0.6)"/>
-            <circle cx="118" cy="82" r="4" fill="rgba(16,185,129,0.6)"/>
-            <line x1="76" y1="48" x2="94" y2="58" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
-            <line x1="130" y1="42" x2="106" y2="56" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
-            <line x1="118" y1="82" x2="104" y2="66" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
-          </svg>
-          <div class="project-img-overlay">
-            <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;">↗</div>
+          <div class="project-body">
+            <div class="project-cat">Mobile App</div>
+            <h3 class="project-title">AI Personal Assistant</h3>
+            <p class="project-desc">An intelligent mobile application powered by machine learning for personalized recommendations.</p>
+            <div class="project-tags">
+              <span class="tag tag-purple">Flutter</span>
+              <span class="tag tag-blue">Python</span>
+              <span class="tag tag-cyan">ML</span>
+            </div>
+            <a href="#" class="project-link">View Project →</a>
           </div>
         </div>
-        <div class="project-body">
-          <div class="project-cat">Cyber Security</div>
-          <div class="project-title">ShieldGuard SOC Platform</div>
-          <p class="project-desc">Security Operations Center berbasis cloud dengan threat intelligence real-time, SIEM terintegrasi, dan response otomatis.</p>
-          <div class="project-tags">
-            <span class="tag tag-blue">Go</span>
-            <span class="tag tag-cyan">Kubernetes</span>
-            <span class="tag tag-green">Elasticsearch</span>
+        <div class="project-card">
+          <div class="project-img">
+            <canvas class="project-img-canvas" style="background: linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(34,197,94,0.2) 100%);"></canvas>
+            <div class="project-img-overlay">
+              <span style="font-size: 24px;">🌐</span>
+            </div>
           </div>
-          <div class="project-link">Lihat Detail →</div>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="project-card reveal reveal-delay-3">
-        <div class="project-img" style="background:linear-gradient(135deg,#0B0F19,#0D1A0D);">
-          <svg width="200" height="120" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-img-canvas" aria-hidden="true">
-            <rect x="20" y="15" width="70" height="90" rx="6" fill="rgba(16,185,129,0.05)" stroke="rgba(16,185,129,0.15)" stroke-width="1"/>
-            <rect x="30" y="25" width="50" height="6" rx="2" fill="rgba(16,185,129,0.25)"/>
-            <rect x="30" y="36" width="35" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
-            <rect x="30" y="46" width="50" height="1" fill="rgba(255,255,255,0.05)"/>
-            <rect x="30" y="52" width="22" height="16" rx="3" fill="rgba(16,185,129,0.12)"/>
-            <rect x="56" y="52" width="22" height="16" rx="3" fill="rgba(6,182,212,0.12)"/>
-            <rect x="110" y="15" width="70" height="42" rx="6" fill="rgba(6,182,212,0.05)" stroke="rgba(6,182,212,0.15)" stroke-width="1"/>
-            <rect x="120" y="25" width="50" height="6" rx="2" fill="rgba(6,182,212,0.25)"/>
-            <rect x="120" y="36" width="35" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
-            <rect x="110" y="63" width="70" height="42" rx="6" fill="rgba(139,92,246,0.05)" stroke="rgba(139,92,246,0.15)" stroke-width="1"/>
-            <rect x="120" y="72" width="50" height="6" rx="2" fill="rgba(139,92,246,0.25)"/>
-            <rect x="120" y="83" width="35" height="5" rx="2" fill="rgba(255,255,255,0.08)"/>
-          </svg>
-          <div class="project-img-overlay">
-            <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;">↗</div>
+          <div class="project-body">
+            <div class="project-cat">Enterprise Solution</div>
+            <h3 class="project-title">Cloud Infrastructure</h3>
+            <p class="project-desc">Scalable cloud architecture supporting millions of transactions with 99.99% uptime guarantee.</p>
+            <div class="project-tags">
+              <span class="tag tag-green">Kubernetes</span>
+              <span class="tag tag-cyan">Docker</span>
+              <span class="tag tag-blue">Terraform</span>
+            </div>
+            <a href="#" class="project-link">View Project →</a>
           </div>
         </div>
-        <div class="project-body">
-          <div class="project-cat">Enterprise Software</div>
-          <div class="project-title">NusaERP Enterprise Suite</div>
-          <p class="project-desc">Sistem ERP komprehensif untuk perusahaan manufaktur Indonesia — HR, finance, inventory, procurement dalam satu platform.</p>
-          <div class="project-tags">
-            <span class="tag tag-blue">Node.js</span>
-            <span class="tag tag-cyan">PostgreSQL</span>
-            <span class="tag tag-purple">Docker</span>
-          </div>
-          <div class="project-link">Lihat Detail →</div>
-        </div>
-      </div>
-
-      <!-- Project 4 -->
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-img" style="background:linear-gradient(135deg,#0B0F19,#0F1D2E);">
-          <svg width="200" height="120" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-img-canvas" aria-hidden="true">
-            <ellipse cx="100" cy="60" rx="75" ry="45" fill="none" stroke="rgba(6,182,212,0.1)" stroke-width="1"/>
-            <ellipse cx="100" cy="60" rx="50" ry="30" fill="none" stroke="rgba(6,182,212,0.15)" stroke-width="1"/>
-            <ellipse cx="100" cy="60" rx="25" ry="15" fill="rgba(6,182,212,0.08)" stroke="rgba(6,182,212,0.25)" stroke-width="1"/>
-            <circle cx="100" cy="60" r="4" fill="var(--cyan-core,#06B6D4)" opacity="0.8"/>
-            <circle cx="42" cy="42" r="5" fill="rgba(37,99,235,0.5)"/>
-            <circle cx="158" cy="78" r="4" fill="rgba(37,99,235,0.4)"/>
-            <circle cx="60" cy="85" r="3" fill="rgba(245,158,11,0.5)"/>
-            <circle cx="145" cy="35" r="3" fill="rgba(16,185,129,0.5)"/>
-            <line x1="42" y1="42" x2="100" y2="60" stroke="rgba(6,182,212,0.2)" stroke-width="1"/>
-            <line x1="158" y1="78" x2="100" y2="60" stroke="rgba(6,182,212,0.2)" stroke-width="1"/>
-            <line x1="60" y1="85" x2="100" y2="60" stroke="rgba(6,182,212,0.2)" stroke-width="1"/>
-            <line x1="145" y1="35" x2="100" y2="60" stroke="rgba(6,182,212,0.2)" stroke-width="1"/>
-          </svg>
-          <div class="project-img-overlay">
-            <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;">↗</div>
-          </div>
-        </div>
-        <div class="project-body">
-          <div class="project-cat">Smart City</div>
-          <div class="project-title">UrbanPulse City Platform</div>
-          <p class="project-desc">Platform manajemen kota cerdas — monitoring infrastruktur, traffic management, e-services warga, dan analitik kota real-time.</p>
-          <div class="project-tags">
-            <span class="tag tag-blue">Python</span>
-            <span class="tag tag-cyan">IoT</span>
-            <span class="tag tag-green">AWS</span>
-          </div>
-          <div class="project-link">Lihat Detail →</div>
-        </div>
-      </div>
-
-      <!-- Project 5 -->
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-img" style="background:linear-gradient(135deg,#0B0F19,#1A150F);">
-          <svg width="200" height="120" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-img-canvas" aria-hidden="true">
-            <g>
-              <rect x="25" y="25" width="30" height="30" rx="4" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.25)" stroke-width="1"/>
-              <text x="40" y="45" text-anchor="middle" fill="rgba(245,158,11,0.7)" font-size="14">⊕</text>
-            </g>
-            <g>
-              <rect x="85" y="25" width="30" height="30" rx="4" fill="rgba(6,182,212,0.1)" stroke="rgba(6,182,212,0.25)" stroke-width="1"/>
-              <text x="100" y="45" text-anchor="middle" fill="rgba(6,182,212,0.7)" font-size="14">◈</text>
-            </g>
-            <g>
-              <rect x="145" y="25" width="30" height="30" rx="4" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.25)" stroke-width="1"/>
-              <text x="160" y="45" text-anchor="middle" fill="rgba(16,185,129,0.7)" font-size="14">⊞</text>
-            </g>
-            <line x1="55" y1="40" x2="85" y2="40" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3 3"/>
-            <line x1="115" y1="40" x2="145" y2="40" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3 3"/>
-            <rect x="55" y="70" width="90" height="30" rx="6" fill="rgba(37,99,235,0.08)" stroke="rgba(37,99,235,0.2)" stroke-width="1"/>
-            <rect x="65" y="79" width="70" height="6" rx="2" fill="rgba(37,99,235,0.3)"/>
-            <rect x="70" y="88" width="55" height="4" rx="2" fill="rgba(255,255,255,0.06)"/>
-            <line x1="100" y1="55" x2="100" y2="70" stroke="rgba(37,99,235,0.3)" stroke-width="1"/>
-          </svg>
-          <div class="project-img-overlay">
-            <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;">↗</div>
-          </div>
-        </div>
-        <div class="project-body">
-          <div class="project-cat">IoT & Monitoring</div>
-          <div class="project-title">SensorNet IoT Hub</div>
-          <p class="project-desc">Platform monitoring IoT industri untuk sektor energi dan manufaktur — 10,000+ perangkat terhubung dengan latensi sub-50ms.</p>
-          <div class="project-tags">
-            <span class="tag tag-blue">MQTT</span>
-            <span class="tag tag-cyan">Kafka</span>
-            <span class="tag tag-purple">InfluxDB</span>
-          </div>
-          <div class="project-link">Lihat Detail →</div>
-        </div>
-      </div>
-
-      <!-- Project 6 -->
-      <div class="project-card reveal reveal-delay-3">
-        <div class="project-img" style="background:linear-gradient(135deg,#0B0F19,#1A0F2E);">
-          <svg width="200" height="120" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="project-img-canvas" aria-hidden="true">
-            <rect x="20" y="20" width="160" height="80" rx="8" fill="rgba(139,92,246,0.05)" stroke="rgba(139,92,246,0.1)" stroke-width="1"/>
-            <rect x="30" y="30" width="140" height="20" rx="4" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.15)" stroke-width="1"/>
-            <rect x="35" y="36" width="8" height="8" rx="2" fill="rgba(139,92,246,0.4)"/>
-            <rect x="48" y="38" width="60" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
-            <rect x="30" y="58" width="60" height="34" rx="4" fill="rgba(37,99,235,0.1)" stroke="rgba(37,99,235,0.15)" stroke-width="1"/>
-            <rect x="100" y="58" width="60" height="15" rx="4" fill="rgba(6,182,212,0.1)" stroke="rgba(6,182,212,0.15)" stroke-width="1"/>
-            <rect x="100" y="78" width="60" height="14" rx="4" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.15)" stroke-width="1"/>
-            <rect x="36" y="64" width="48" height="4" rx="2" fill="rgba(139,92,246,0.3)"/>
-            <rect x="36" y="73" width="35" height="3" rx="2" fill="rgba(255,255,255,0.07)"/>
-            <rect x="36" y="80" width="28" height="6" rx="3" fill="rgba(37,99,235,0.25)"/>
-          </svg>
-          <div class="project-img-overlay">
-            <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;">↗</div>
-          </div>
-        </div>
-        <div class="project-body">
-          <div class="project-cat">E-Commerce</div>
-          <div class="project-title">HyperMall Enterprise</div>
-          <p class="project-desc">Platform e-commerce enterprise dengan arsitektur microservices, multi-tenant, dan kapasitas 1 juta transaksi per hari.</p>
-          <div class="project-tags">
-            <span class="tag tag-blue">Next.js</span>
-            <span class="tag tag-cyan">Redis</span>
-            <span class="tag tag-green">PostgreSQL</span>
-          </div>
-          <div class="project-link">Lihat Detail →</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="sect-divider"></div>
-
-<!-- ====================== TECH STACK ====================== -->
-<section id="techstack" class="section" aria-labelledby="techstack-heading">
-  <div class="container">
-    <div class="techstack-header">
-      <div class="section-label reveal">Tech Stack</div>
-      <h2 class="section-title reveal reveal-delay-1" id="techstack-heading">
-        Teknologi <span class="grad">Terdepan</span>
-      </h2>
-      <p class="section-desc reveal reveal-delay-2">
-        Kami menggunakan teknologi enterprise-grade yang telah terbukti untuk membangun sistem yang andal, skalabel, dan aman.
-      </p>
-    </div>
-    <div class="tech-grid">
-      <div class="tech-item reveal reveal-delay-1">
-        <div class="tech-icon-svg" style="background:rgba(97,218,251,0.1);">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="#61DAFB"><path d="M12 13.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 17.5c-.72 0-1.42-.05-2.1-.13C8.6 18.02 7.5 16.62 7.5 15c0-1.38.87-2.6 2.12-3.03A3.5 3.5 0 0112 8.5a3.5 3.5 0 012.38 3.47A3.5 3.5 0 0116.5 15c0 1.62-1.1 3.02-2.4 4.37-.68.08-1.38.13-2.1.13z" opacity=".3"/></svg>
-        </div>
-        <div class="tech-name">React</div>
-        <div class="tech-type">Frontend</div>
-      </div>
-      <div class="tech-item reveal reveal-delay-2">
-        <div class="tech-icon-svg" style="background:rgba(0,0,0,0.3);">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M11.5 0l-.5.5v7.5L5.5 3.5 5 4v16l.5.5h13l.5-.5V4l-.5-.5-5.5 4.5V.5L11.5 0zm.5 2.15l5 4.08V19H7V6.23l5-4.08z" opacity=".8"/></svg>
-        </div>
-        <div class="tech-name">Next.js</div>
-        <div class="tech-type">Framework</div>
-      </div>
-      <div class="tech-item reveal reveal-delay-3">
-        <div class="tech-icon-svg" style="background:rgba(104,160,99,0.15);">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="#68A063"><path d="M12 1.85c-.27 0-.55.07-.78.2l-7.44 4.3c-.48.28-.78.8-.78 1.36v8.58c0 .56.3 1.08.78 1.36l1.95 1.12c.95.46 1.27.47 1.71.47 1.4 0 2.21-.85 2.21-2.33V8.44c0-.12-.1-.22-.22-.22H8.5c-.13 0-.22.1-.22.22v8.47c0 .66-.68 1.31-1.77.76L4.45 16.5a.26.26 0 01-.11-.21V7.71c0-.09.04-.17.11-.21l7.44-4.29c.06-.04.16-.04.22 0l7.44 4.29c.07.04.11.12.11.21v8.58c0 .08-.04.16-.11.21l-7.44 4.29c-.06.04-.16.04-.23 0l-1.89-1.12c-.06-.03-.13-.05-.18-.02-.52.29-.62.33-1.11.47-.12.04-.3.1.07.31l2.47 1.46c.23.14.5.21.78.21.27 0 .55-.07.78-.21l7.44-4.29c.48-.28.78-.8.78-1.36V7.71c0-.56-.3-1.08-.78-1.36L12.78 2.05c-.24-.13-.51-.2-.78-.2z"/></svg>
-        </div>
-        <div class="tech-name">Node.js</div>
-        <div class="tech-type">Runtime</div>
-      </div>
-      <div class="tech-item reveal reveal-delay-4">
-        <div class="tech-icon-svg" style="background:rgba(55,118,171,0.15);">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="#3776AB"><path d="M9.585 11.692c.981.029 1.973-.129 2.9-.458.898-.298 1.72-.804 2.393-1.484.654-.686 1.17-1.47 1.543-2.333.288-.666.468-1.373.534-2.098a7.52 7.52 0 00-.046-1.763 8.8 8.8 0 00-.536-2.073A7.038 7.038 0 0015.074.15C14.403-.08 13.697-.008 13.02.095c-.83.128-1.637.4-2.385.793a8.03 8.03 0 00-1.94 1.47 8.49 8.49 0 00-1.374 2.025c-.3.616-.504 1.272-.605 1.945a7.538 7.538 0 00-.048 1.82c.064.67.246 1.32.538 1.922a5.78 5.78 0 001.332 1.841c.37.349.79.64 1.244.86l-.196.921z" opacity=".8"/></svg>
-        </div>
-        <div class="tech-name">Python</div>
-        <div class="tech-type">Backend / AI</div>
-      </div>
-      <div class="tech-item reveal reveal-delay-5">
-        <div class="tech-icon-svg" style="background:rgba(13,183,237,0.12);">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="#0DB7ED"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 5.733h2.12a.186.186 0 00.184-.186v-1.88a.185.185 0 00-.185-.186H8.1a.185.185 0 00-.185.185v1.88c0 .102.083.186.185.186m-2.964-4.647h2.119a.186.186 0 00.185-.185v-1.888a.186.186 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.888c0 .102.084.185.186.185"/></svg>
-        </div>
-        <div class="tech-name">Docker</div>
-        <div class="tech-type">Container</div>
-      </div>
-      <div class="tech-item reveal reveal-delay-1">
-        <div class="tech-icon-svg" style="background:rgba(50,108,229,0.12);">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="#326CE5"><path d="M10.204 14.35l.007.01-.999 2.413a5.171 5.171 0 01-2.075-2.597l2.578-.437.004.005a.44.44 0 01.485.606zm-.833-2.129a.44.44 0 01.173-.756l.002-.011 2.468-1.529a5.165 5.165 0 01.068 3.279l-2.474-.573c-.003 0-.005-.003-.008-.003a.45.45 0 01-.229-.407zM12 7.527c.15 0 .299.006.446.018l-1.006 2.372.003.01-.527.33c-.03.019-.064.024-.094.041a.442.442 0 01-.622-.36l-.004.003-.07-2.585A5.16 5.16 0 0112 7.527zm1.831 9.057a5.164 5.164 0 01-2.649.002l.95-2.427-.001-.005a.435.435 0 01.733-.108l.012-.003.956 2.541zm3.35-3.614a5.206 5.206 0 01-1.283 2.149l-1.668-1.94.003-.006a.443.443 0 01.169-.76l.004-.006 2.563-.592c.08.378.138.77.139 1.165-.007-.004-.013.007-.019.007l.092-.017zm-5.181 1.6V12H12l-.001-.007.536-.327 2.574.594-.003.02.003-.02a5.165 5.165 0 01-4.11 1.909zM12 6c-3.309 0-6 2.691-6 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6z" opacity=".85"/></svg>
-        </div>
-        <div class="tech-name">Kubernetes</div>
-        <div class="tech-type">Orchestration</div>
-      </div>
-      <div class="tech-item reveal reveal-delay-2">
-        <div class="tech-icon-svg" style="background:rgba(51,103,145,0.15);">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="#336791"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" opacity=".3"/><ellipse cx="12" cy="8" rx="5" ry="2" fill="#336791"/><path d="M7 8v4c0 1.1 2.24 2 5 2s5-.9 5-2V8" fill="#336791" opacity=".6"/><path d="M7 12v4c0 1.1 2.24 2 5 2s5-.9 5-2v-4" fill="#336791" opacity=".4"/></svg>
-        </div>
-        <div class="tech-name">PostgreSQL</div>
-        <div class="tech-type">Database</div>
-      </div>
-      <div class="tech-item reveal reveal-delay-3">
-        <div class="tech-icon-svg" style="background:rgba(255,110,0,0.12);">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="#FF6F00"><path d="M22.63 12.55l-2.2-1.28V5.3L12 0 1.57 5.3v5.97L-.59 12.55 12 20 22.63 12.55zM12 1.28l8.8 5.09-8.8 5.09-8.8-5.09L12 1.28zm-9.2 6.53l9.2 5.31-9.2 5.31V7.81zm18.4 10.62l-9.2-5.31 9.2-5.31v10.62z" opacity=".8"/></svg>
-        </div>
-        <div class="tech-name">TensorFlow</div>
-        <div class="tech-type">AI / ML</div>
-      </div>
-      <div class="tech-item reveal reveal-delay-4">
-        <div class="tech-icon-svg" style="background:rgba(255,153,0,0.1);">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="#FF9900"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.504.335a.383.383 0 01-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 01-.287-.375 6.18 6.18 0 01-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 01-.28.104.488.488 0 01-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 01.224-.167c.279-.144.614-.264 1.005-.36a4.84 4.84 0 011.246-.151c.95 0 1.644.216 2.091.647.439.43.663 1.085.663 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.543-.271.758-.51.128-.152.224-.32.272-.512.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 00-.735-.136 6.02 6.02 0 00-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.240-.024-.304-.08-.063-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 01-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.246-5.284c.04-.16.088-.264.151-.312a.549.549 0 01.32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.262 5.348 1.38-5.348c.048-.16.104-.264.16-.312a.52.52 0 01.311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 01-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 01-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 01-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.503 0 .894-.088 1.165-.264a.86.86 0 00.415-.758.777.777 0 00-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 01-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.311.088.455.136a1.8 1.8 0 01.343.16c.113.072.192.151.239.239.048.08.072.184.072.32v.375c0 .168-.064.256-.184.256a.83.83 0 01-.303-.096 3.652 3.652 0 00-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.702 0 .216.08.4.24.55.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.371.703.371 1.118 0 .343-.072.655-.207.926-.144.272-.336.511-.583.703-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167z" opacity=".9"/></svg>
-        </div>
-        <div class="tech-name">AWS</div>
-        <div class="tech-type">Cloud</div>
-      </div>
-      <div class="tech-item reveal reveal-delay-5">
-        <div class="tech-icon-svg" style="background:rgba(255,255,255,0.04);">
-          <svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/><path d="M12 2L12 22M2 12L22 12M4.93 4.93L19.07 19.07M19.07 4.93L4.93 19.07" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="12" r="3" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/></svg>
-        </div>
-        <div class="tech-name">Linux</div>
-        <div class="tech-type">OS / Server</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="sect-divider"></div>
-
-<!-- ====================== TEAM ====================== -->
-<section id="team" class="section" aria-labelledby="team-heading">
-  <div class="container">
-    <div class="team-header">
-      <div class="section-label reveal">Tim Kami</div>
-      <h2 class="section-title reveal reveal-delay-1" id="team-heading">
-        Para Ahli di <span class="grad">Balik Layar</span>
-      </h2>
-      <p class="section-desc reveal reveal-delay-2">
-        Tim kami terdiri dari insinyur, desainer, dan konsultan berpengalaman yang berdedikasi untuk menghadirkan solusi terbaik.
-      </p>
-    </div>
-    <div class="team-grid">
-
-      <!-- CEO -->
-      <div class="team-card reveal reveal-delay-1">
-        <div class="team-card-top">
-          <div class="team-avatar" style="background:linear-gradient(135deg,rgba(37,99,235,0.2),rgba(6,182,212,0.2));color:var(--blue-light);">AR</div>
+  <!-- TECH STACK SECTION -->
+  <section id="techstack" class="section">
+    <div class="container">
+      <div class="techstack-header">
+        <span class="section-label">Technology Stack</span>
+        <h2 class="section-title">Technologies We <span class="grad">Master</span></h2>
+        <p class="section-desc">We stay at the forefront of technology trends and use industry-leading tools and frameworks</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <div class="tech-icon-svg">⚛️</div>
+          <div class="tech-name">React</div>
+          <div class="tech-type">Frontend Framework</div>
         </div>
-        <div class="team-body">
-          <div class="team-name">Arya Reza</div>
+        <div class="tech-item">
+          <div class="tech-icon-svg">🟢</div>
+          <div class="tech-name">Node.js</div>
+          <div class="tech-type">Backend Runtime</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon-svg">🐍</div>
+          <div class="tech-name">Python</div>
+          <div class="tech-type">Data & AI</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon-svg">☁️</div>
+          <div class="tech-name">AWS</div>
+          <div class="tech-type">Cloud Services</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon-svg">🐳</div>
+          <div class="tech-name">Docker</div>
+          <div class="tech-type">Containerization</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon-svg">⚙️</div>
+          <div class="tech-name">Kubernetes</div>
+          <div class="tech-type">Orchestration</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon-svg">🗄️</div>
+          <div class="tech-name">PostgreSQL</div>
+          <div class="tech-type">Database</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon-svg">🔍</div>
+          <div class="tech-name">Elasticsearch</div>
+          <div class="tech-type">Search Engine</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon-svg">🔒</div>
+          <div class="tech-name">Zero Trust</div>
+          <div class="tech-type">Security</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-icon-svg">⚡</div>
+          <div class="tech-name">GraphQL</div>
+          <div class="tech-type">API Query</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM SECTION -->
+  <section id="team" class="section">
+    <div class="container">
+      <div class="team-header">
+        <span class="section-label">Our Team</span>
+        <h2 class="section-title">Meet Our <span class="grad">Talented Team</span></h2>
+        <p class="section-desc">Exceptional people delivering exceptional results</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">👨‍💼</div>
+          <h3 class="team-name">Alex Johnson</h3>
           <div class="team-role">CEO & Founder</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px;line-height:1.6;">15 tahun di industri teknologi. Ex-Google, Microsoft alumni.</div>
+          <p class="team-desc">Visionary leader with 15+ years in tech innovation and business strategy.</p>
           <div class="team-socials">
-            <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
-            <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
-            <a href="#" class="social-btn" aria-label="GitHub">⌥</a>
+            <a href="#" class="team-social-link">in</a>
+            <a href="#" class="team-social-link">tw</a>
+            <a href="#" class="team-social-link">gh</a>
           </div>
         </div>
-      </div>
-
-      <!-- CTO -->
-      <div class="team-card reveal reveal-delay-2">
-        <div class="team-card-top">
-          <div class="team-avatar" style="background:linear-gradient(135deg,rgba(139,92,246,0.2),rgba(37,99,235,0.2));color:#A78BFA;">DN</div>
-        </div>
-        <div class="team-body">
-          <div class="team-name">Devi Nuraini</div>
+        <div class="team-card">
+          <div class="team-avatar">👩‍💻</div>
+          <h3 class="team-name">Sarah Chen</h3>
           <div class="team-role">CTO</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px;line-height:1.6;">Cloud architecture expert. Kubernetes CNCF Ambassador 2024.</div>
+          <p class="team-desc">Expert in cloud architecture and AI systems with multiple publications.</p>
           <div class="team-socials">
-            <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
-            <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
-            <a href="#" class="social-btn" aria-label="GitHub">⌥</a>
+            <a href="#" class="team-social-link">in</a>
+            <a href="#" class="team-social-link">tw</a>
+            <a href="#" class="team-social-link">gh</a>
           </div>
         </div>
-      </div>
-
-      <!-- Lead Dev -->
-      <div class="team-card reveal reveal-delay-3">
-        <div class="team-card-top">
-          <div class="team-avatar" style="background:linear-gradient(135deg,rgba(16,185,129,0.2),rgba(6,182,212,0.2));color:#34D399;">BH</div>
-        </div>
-        <div class="team-body">
-          <div class="team-name">Bagas Hendra</div>
-          <div class="team-role">Lead Developer</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px;line-height:1.6;">Full-stack specialist. Open source contributor, 200+ GitHub stars.</div>
+        <div class="team-card">
+          <div class="team-avatar">👨‍🔬</div>
+          <h3 class="team-name">Michael Roberts</h3>
+          <div class="team-role">Head of Security</div>
+          <p class="team-desc">Cybersecurity specialist focused on zero-trust architecture and compliance.</p>
           <div class="team-socials">
-            <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
-            <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
-            <a href="#" class="social-btn" aria-label="GitHub">⌥</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Cyber Security -->
-      <div class="team-card reveal reveal-delay-4">
-        <div class="team-card-top">
-          <div class="team-avatar" style="background:linear-gradient(135deg,rgba(239,68,68,0.2),rgba(245,158,11,0.15));color:#F87171;">RK</div>
-        </div>
-        <div class="team-body">
-          <div class="team-name">Rina Kartika</div>
-          <div class="team-role">Cyber Security Lead</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px;line-height:1.6;">CISSP, CEH certified. Ethical hacker with 10+ CVEs reported.</div>
-          <div class="team-socials">
-            <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
-            <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
-            <a href="#" class="social-btn" aria-label="GitHub">⌥</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- AI Engineer -->
-      <div class="team-card reveal reveal-delay-5">
-        <div class="team-card-top">
-          <div class="team-avatar" style="background:linear-gradient(135deg,rgba(245,158,11,0.2),rgba(239,68,68,0.15));color:#FCD34D;">FP</div>
-        </div>
-        <div class="team-body">
-          <div class="team-name">Fajar Pratama</div>
-          <div class="team-role">AI/ML Engineer</div>
-          <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px;line-height:1.6;">PhD candidate AI. Published 3 papers di NeurIPS, IEEE 2025.</div>
-          <div class="team-socials">
-            <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
-            <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
-            <a href="#" class="social-btn" aria-label="GitHub">⌥</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="sect-divider"></div>
-
-<!-- ====================== TESTIMONIALS ====================== -->
-<section id="testimonials" class="section" aria-labelledby="testi-heading">
-  <div class="container">
-    <div class="testi-header">
-      <div class="section-label reveal">Testimoni</div>
-      <h2 class="section-title reveal reveal-delay-1" id="testi-heading">
-        Kata <span class="grad">Client Kami</span>
-      </h2>
-      <p class="section-desc reveal reveal-delay-2">
-        Kepercayaan client adalah prioritas kami. Berikut pengalaman mereka bermitra bersama Tech Solution.
-      </p>
-    </div>
-    <div class="testi-grid">
-
-      <div class="testi-card featured reveal reveal-delay-1">
-        <div class="stars" aria-label="5 bintang">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <div class="quote-mark">"</div>
-        <p class="testi-text">Tech Solution mengubah cara kami beroperasi secara fundamental. Platform AI yang mereka bangun mengurangi waktu proses analitik kami dari 8 jam menjadi 12 menit. ROI yang luar biasa dalam 3 bulan pertama.</p>
-        <div class="testi-footer">
-          <div class="testi-avatar" style="background:rgba(37,99,235,0.15);color:var(--blue-light);">BW</div>
-          <div>
-            <div class="testi-name">Budi Wicaksono</div>
-            <div class="testi-co">CTO, Pertamina Digital</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testi-card reveal reveal-delay-2">
-        <div class="stars" aria-label="5 bintang">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <div class="quote-mark">"</div>
-        <p class="testi-text">Implementasi cyber security mereka sangat solid. Zero security incident selama 18 bulan setelah deployment. Tim mereka responsif 24/7 dan sangat profesional dalam menangani setiap issue.</p>
-        <div class="testi-footer">
-          <div class="testi-avatar" style="background:rgba(16,185,129,0.15);color:#34D399;">SH</div>
-          <div>
-            <div class="testi-name">Siti Handayani</div>
-            <div class="testi-co">CISO, Bank Mandiri</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testi-card reveal reveal-delay-3">
-        <div class="stars" aria-label="5 bintang">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <div class="quote-mark">"</div>
-        <p class="testi-text">Migrasi cloud kami yang sempat tertunda 2 tahun berhasil diselesaikan Tech Solution hanya dalam 4 bulan. Zero downtime, performance meningkat 340%, dan biaya infrastruktur turun 45%.</p>
-        <div class="testi-footer">
-          <div class="testi-avatar" style="background:rgba(139,92,246,0.15);color:#A78BFA;">RD</div>
-          <div>
-            <div class="testi-name">Rizky Dermawan</div>
-            <div class="testi-co">VP Engineering, Tokopedia</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="sect-divider"></div>
-
-<!-- ====================== CONTACT ====================== -->
-<section id="contact" class="section" aria-labelledby="contact-heading">
-  <div class="container">
-    <div class="contact-grid">
-      <!-- Left info -->
-      <div class="contact-info">
-        <div class="section-label reveal">Hubungi Kami</div>
-        <h2 class="section-title reveal reveal-delay-1" id="contact-heading">
-          Mari Membangun <span class="grad">Bersama</span>
-        </h2>
-        <p class="section-desc reveal reveal-delay-2">
-          Siap mendiskusikan kebutuhan teknologi Anda? Tim kami siap memberikan konsultasi gratis dan proposal custom dalam 24 jam.
-        </p>
-
-        <div class="contact-items reveal reveal-delay-3">
-          <div class="contact-item">
-            <div class="contact-icon contact-icon-blue">✉</div>
-            <div>
-              <div class="contact-item-label">Email</div>
-              <div class="contact-item-val">hello@techsolution.id</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon contact-icon-cyan">☎</div>
-            <div>
-              <div class="contact-item-label">Telepon</div>
-              <div class="contact-item-val">+62 21 5588 9900</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon contact-icon-purple">◎</div>
-            <div>
-              <div class="contact-item-label">Alamat</div>
-              <div class="contact-item-val">Sudirman Central Business District, Tower 3 Lt. 28, Jakarta Selatan 12190</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon contact-icon-green">◷</div>
-            <div>
-              <div class="contact-item-label">Jam Operasional</div>
-              <div class="contact-item-val">Senin – Jumat, 09.00 – 18.00 WIB</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Map placeholder -->
-        <div class="map-placeholder reveal reveal-delay-4" aria-label="Lokasi kantor Tech Solution">
-          <svg viewBox="0 0 560 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="560" height="180" fill="var(--bg-card,#141B2D)"/>
-            <!-- Grid lines -->
-            <line x1="0" y1="60" x2="560" y2="60" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-            <line x1="0" y1="120" x2="560" y2="120" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-            <line x1="140" y1="0" x2="140" y2="180" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-            <line x1="280" y1="0" x2="280" y2="180" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-            <line x1="420" y1="0" x2="420" y2="180" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-            <!-- Roads -->
-            <rect x="0" y="82" width="560" height="16" fill="rgba(37,99,235,0.06)"/>
-            <rect x="262" y="0" width="16" height="180" fill="rgba(37,99,235,0.06)"/>
-            <!-- Building blocks -->
-            <rect x="20" y="20" width="50" height="40" rx="3" fill="rgba(255,255,255,0.04)"/>
-            <rect x="80" y="30" width="40" height="30" rx="3" fill="rgba(255,255,255,0.03)"/>
-            <rect x="320" y="20" width="60" height="50" rx="3" fill="rgba(255,255,255,0.04)"/>
-            <rect x="400" y="30" width="45" height="35" rx="3" fill="rgba(255,255,255,0.03)"/>
-            <rect x="20" y="130" width="55" height="35" rx="3" fill="rgba(255,255,255,0.04)"/>
-            <rect x="400" y="135" width="50" height="30" rx="3" fill="rgba(255,255,255,0.03)"/>
-            <!-- Marker -->
-            <circle cx="280" cy="90" r="16" fill="rgba(37,99,235,0.2)" stroke="rgba(37,99,235,0.5)" stroke-width="1.5"/>
-            <circle cx="280" cy="90" r="6" fill="var(--blue-core,#2563EB)"/>
-            <circle cx="280" cy="90" r="4" fill="white"/>
-            <!-- Pulse rings -->
-            <circle cx="280" cy="90" r="22" fill="none" stroke="rgba(37,99,235,0.2)" stroke-width="1">
-              <animate attributeName="r" values="16;28;16" dur="2s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/>
-            </circle>
-            <!-- Label -->
-            <rect x="200" y="114" width="160" height="24" rx="5" fill="var(--bg-card,#141B2D)" stroke="rgba(37,99,235,0.3)" stroke-width="1"/>
-            <text x="280" y="131" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10" font-family="monospace">Tech Solution HQ · SCBD Jakarta</text>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Right form -->
-      <div class="reveal reveal-delay-2">
-        <div class="contact-form-card">
-          <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--text-primary);margin-bottom:6px;">Kirim Pesan</h3>
-          <p style="font-size:14px;color:var(--text-muted);margin-bottom:28px;">Ceritakan kebutuhan Anda dan kami akan menghubungi dalam 24 jam.</p>
-
-          <form id="contact-form" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="f-name">Nama Lengkap *</label>
-                <input type="text" id="f-name" name="name" placeholder="John Doe" required />
-              </div>
-              <div class="form-group">
-                <label for="f-email">Email *</label>
-                <input type="email" id="f-email" name="email" placeholder="john@company.com" required />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="f-company">Perusahaan</label>
-              <input type="text" id="f-company" name="company" placeholder="PT. Maju Bersama" />
-            </div>
-            <div class="form-group">
-              <label for="f-service">Layanan yang Dibutuhkan</label>
-              <select id="f-service" name="service" style="background:rgba(255,255,255,0.03);color:var(--text-primary);">
-                <option value="" style="background:#141B2D;">Pilih layanan...</option>
-                <option value="web" style="background:#141B2D;">Web Development</option>
-                <option value="mobile" style="background:#141B2D;">Mobile App Development</option>
-                <option value="security" style="background:#141B2D;">Cyber Security</option>
-                <option value="cloud" style="background:#141B2D;">Cloud Infrastructure</option>
-                <option value="ai" style="background:#141B2D;">AI & Machine Learning</option>
-                <option value="design" style="background:#141B2D;">UI/UX Design</option>
-                <option value="consulting" style="background:#141B2D;">IT Consulting</option>
-                <option value="other" style="background:#141B2D;">Lainnya</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="f-message">Pesan *</label>
-              <textarea id="f-message" name="message" placeholder="Ceritakan kebutuhan, scope project, dan timeline Anda..." required></textarea>
-            </div>
-            <div class="form-footer">
-              <div class="form-note">* Wajib diisi. Kami tidak akan menyebarkan data Anda.</div>
-              <button type="submit" class="btn btn-primary" id="submit-btn">
-                <span>Kirim Pesan</span>
-                <span>→</span>
-              </button>
-            </div>
-          </form>
-          <div id="form-success" style="display:none;padding:20px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:var(--radius-md);margin-top:16px;">
-            <div style="font-family:var(--font-display);font-weight:700;font-size:14px;color:#34D399;margin-bottom:4px;">✓ Pesan terkirim!</div>
-            <div style="font-size:13px;color:var(--text-secondary);">Terima kasih telah menghubungi kami. Tim kami akan merespons dalam 1×24 jam.</div>
+            <a href="#" class="team-social-link">in</a>
+            <a href="#" class="team-social-link">tw</a>
+            <a href="#" class="team-social-link">gh</a>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ====================== FOOTER ====================== -->
-<footer id="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer-grid">
-      <!-- Brand -->
-      <div class="footer-brand">
-        <a href="#hero" class="footer-logo">
-          <div class="logo-mark" style="width:32px;height:32px;border-radius:8px;font-size:12px;">TS</div>
-          Tech Solution
-        </a>
-        <p class="footer-tagline">Kami membangun masa depan digital Indonesia melalui teknologi yang inovatif, aman, dan skalabel.</p>
+  <!-- TESTIMONIALS SECTION -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="section-label">Testimonials</span>
+        <h2 class="section-title">What Our <span class="grad">Clients Say</span></h2>
+        <p class="section-desc">Real feedback from companies we've partnered with</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+          </div>
+          <p class="testimonial-text">"Tech Solution transformed our entire infrastructure. Their expertise and professionalism made the transition seamless and exceeded our expectations."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">👩‍💼</div>
+            <div class="author-info">
+              <div class="author-name">Emily Richardson</div>
+              <div class="author-title">CTO, Fortune 500 Tech</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+          </div>
+          <p class="testimonial-text">"Outstanding team with exceptional technical skills. They delivered our AI solution on time and under budget. Highly recommended for any enterprise project."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">👨‍💼</div>
+            <div class="author-info">
+              <div class="author-name">David Martinez</div>
+              <div class="author-title">VP Engineering, StartupXYZ</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+            <span class="star">⭐</span>
+          </div>
+          <p class="testimonial-text">"The level of attention to detail and commitment to our success was remarkable. Tech Solution is a true partner in every sense of the word."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">👩‍💻</div>
+            <div class="author-info">
+              <div class="author-name">Jessica Wang</div>
+              <div class="author-title">Founder, FinTech Pioneer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <section id="stats" class="section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-num">500+</div>
+          <div class="stat-lbl">Projects Completed</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">150+</div>
+          <div class="stat-lbl">Happy Clients</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">1000+</div>
+          <div class="stat-lbl">Team Members Globally</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">98%</div>
+          <div class="stat-lbl">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-content">
+          <h2 class="contact-h2">Ready to Start Your <span class="grad">Digital Journey?</span></h2>
+          <p class="contact-sub">Let's collaborate to create innovative solutions that drive your business forward</p>
+          <div class="contact-actions">
+            <button class="btn btn-primary">Schedule Consultation</button>
+            <button class="btn btn-outline">Send Email</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Blog</a>
+          <a href="#">Press</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#">Software Development</a>
+          <a href="#">Cyber Security</a>
+          <a href="#">AI Solutions</a>
+          <a href="#">Cloud Services</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="#">Documentation</a>
+          <a href="#">Case Studies</a>
+          <a href="#">Whitepapers</a>
+          <a href="#">Events</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2025 Tech Solution. All rights reserved.</div>
         <div class="footer-socials">
-          <a href="#" class="footer-social" aria-label="LinkedIn">in</a>
-          <a href="#" class="footer-social" aria-label="Twitter">𝕏</a>
-          <a href="#" class="footer-social" aria-label="GitHub">⌥</a>
-          <a href="#" class="footer-social" aria-label="Instagram">◈</a>
-          <a href="#" class="footer-social" aria-label="YouTube">▶</a>
+          <a href="#" class="social-link">f</a>
+          <a href="#" class="social-link">tw</a>
+          <a href="#" class="social-link">in</a>
+          <a href="#" class="social-link">ig</a>
         </div>
-        <div class="footer-cert-badges">
-          <span class="cert-chip">ISO 27001</span>
-          <span class="cert-chip">AWS Partner</span>
-          <span class="cert-chip">CMMI L3</span>
-        </div>
-      </div>
-
-      <!-- Company -->
-      <div>
-        <div class="footer-col-title">Perusahaan</div>
-        <ul class="footer-links">
-          <li><a href="#about">Tentang Kami</a></li>
-          <li><a href="#team">Tim</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#">Karir</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Press Kit</a></li>
-        </ul>
-      </div>
-
-      <!-- Services -->
-      <div>
-        <div class="footer-col-title">Layanan</div>
-        <ul class="footer-links">
-          <li><a href="#services">Web Development</a></li>
-          <li><a href="#services">Mobile App</a></li>
-          <li><a href="#services">Cyber Security</a></li>
-          <li><a href="#services">Cloud Infra</a></li>
-          <li><a href="#services">AI & ML</a></li>
-          <li><a href="#services">IT Consulting</a></li>
-        </ul>
-      </div>
-
-      <!-- Newsletter -->
-      <div>
-        <div class="footer-col-title">Newsletter</div>
-        <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;">Dapatkan update terbaru tentang teknologi dan insight industri langsung di inbox Anda.</p>
-        <div class="newsletter-form">
-          <input type="email" class="newsletter-input" placeholder="email@anda.com" aria-label="Email untuk newsletter" />
-          <button type="button" class="newsletter-btn" onclick="handleNewsletter(this)">→</button>
-        </div>
-        <p style="font-size:11px;color:var(--text-muted);margin-top:8px;">Tidak ada spam. Berhenti langganan kapan saja.</p>
       </div>
     </div>
+  </footer>
 
-    <!-- Bottom bar -->
-    <div class="footer-bottom">
-      <div class="footer-copy">
-        © 2026 Tech Solution. All rights reserved. Built in Jakarta 🇮🇩
-      </div>
-      <div class="footer-bottom-links">
-        <a href="#">Kebijakan Privasi</a>
-        <a href="#">Syarat & Ketentuan</a>
-        <a href="#">Cookie Policy</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Back to Top -->
-<button id="back-top" aria-label="Kembali ke atas" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-
-<!-- ====================== JAVASCRIPT ====================== -->
-<script>
-  // ── LOADER ──────────────────────────────────────────────
-  (function() {
-    const loader = document.getElementById('loader');
-    const pct    = document.getElementById('loader-pct');
-    let p = 0;
-    const t = setInterval(() => {
-      p = Math.min(p + Math.random() * 15 + 2, 99);
-      pct.textContent = Math.floor(p) + '%';
-    }, 120);
+  <script>
+    // Loader
     window.addEventListener('load', () => {
-      clearInterval(t);
-      pct.textContent = '100%';
-      setTimeout(() => {
-        loader.classList.add('hidden');
-        loader.addEventListener('transitionend', () => loader.remove(), { once: true });
-      }, 300);
-    });
-    // Fallback
-    setTimeout(() => {
+      const loader = document.getElementById('loader');
       loader.classList.add('hidden');
-      loader.addEventListener('transitionend', () => loader.remove(), { once: true });
-    }, 2800);
-  })();
-
-  // ── NAVBAR SCROLL ───────────────────────────────────────
-  const navbar   = document.getElementById('navbar');
-  const progBar  = document.getElementById('progress-bar');
-  const backTop  = document.getElementById('back-top');
-  const docH = () => document.documentElement.scrollHeight - window.innerHeight;
-
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    // Navbar
-    navbar.classList.toggle('scrolled', scrollY > 20);
-    // Progress
-    progBar.style.width = (scrollY / docH() * 100) + '%';
-    // Back to top
-    backTop.classList.toggle('show', scrollY > 400);
-    // Active nav
-    updateActiveNav();
-  }, { passive: true });
-
-  // ── ACTIVE NAV ──────────────────────────────────────────
-  const sections  = ['hero','about','services','portfolio','techstack','team','testimonials','contact'];
-  const navLinks  = document.querySelectorAll('.nav-links a');
-  function updateActiveNav() {
-    let current = 'hero';
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el && window.scrollY >= el.offsetTop - 120) current = id;
     });
-    navLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  }
 
-  // ── MOBILE MENU ─────────────────────────────────────────
-  const hamburger  = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  hamburger.addEventListener('click', () => {
-    const open = mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', open);
-  });
-  function closeMobile() {
-    mobileMenu.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  }
-
-  // ── SCROLL REVEAL ────────────────────────────────────────
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── CONTACT FORM ─────────────────────────────────────────
-  document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submit-btn');
-    btn.textContent = 'Mengirim...';
-    btn.disabled = true;
-    btn.style.opacity = '0.7';
-    setTimeout(() => {
-      this.style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-    }, 1200);
-  });
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger-menu');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-  // ── NEWSLETTER ───────────────────────────────────────────
-  function handleNewsletter(btn) {
-    const input = btn.previousElementSibling;
-    if (!input.value || !input.value.includes('@')) {
-      input.style.borderColor = 'rgba(239,68,68,0.5)';
-      setTimeout(() => input.style.borderColor = '', 2000);
-      return;
-    }
-    btn.textContent = '✓';
-    btn.style.background = 'rgba(16,185,129,0.8)';
-    input.value = '';
-    input.placeholder = 'Berhasil berlangganan!';
-  }
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('active');
+    });
 
-  // ── SMOOTH SCROLL ────────────────────────────────────────
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+      });
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
     });
-  });
 
-  // ── KEYBOARD NAV ─────────────────────────────────────────
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeMobile();
-  });
-</script>
+    // Active nav link indicator
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
