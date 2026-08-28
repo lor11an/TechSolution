@@ -1,0 +1,61 @@
+// Database Schema for LAPORAN TBK WLR 2026
+// This schema defines the PostgreSQL/SQLite database structure
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"  // Change to "postgresql" for production
+  url      = "file:./dev.db"
+}
+
+// 1. Suppliers table
+model Supplier {
+  id         Int              @id @default(autoincrement())
+  code       String           @unique
+  name       String
+  location   String
+  headers    WeighingHeader[]
+}
+
+// 2. Weighing Headers table
+model WeighingHeader {
+  id             Int            @id @default(autoincrement())
+  transaction_code String        @unique
+  supplier_id    Int
+  supplier       Supplier       @relation(fields: [supplier_id], references: [id])
+  date           String
+  status         String         @default("pending") // pending, completed, cancelled
+  location_stamp String
+  signee_name    String
+  items          WeighingItem[]
+  deductions     Deductions?
+  created_at     DateTime       @default(now())
+  updated_at     DateTime       @updatedAt
+}
+
+// 3. Weighing Items table
+model WeighingItem {
+  id           Int            @id @default(autoincrement())
+  header_id    Int
+  header       WeighingHeader @relation(fields: [header_id], references: [id], onDelete: Cascade)
+  item_no      Int
+  item_label   String
+  gross_weight Float
+  net_weight   Float
+  price_per_kg Float
+  subtotal     Float
+}
+
+// 4. Deductions table
+model Deductions {
+  id               Int            @id @default(autoincrement())
+  header_id        Int            @unique
+  header           WeighingHeader @relation(fields: [header_id], references: [id], onDelete: Cascade)
+  ppn_amount       Float          @default(0)
+  kasut_amount     Float          @default(0)
+  keranjang_amount Float          @default(0)
+  total_deduction  Float
+  final_payout     Float
+}
